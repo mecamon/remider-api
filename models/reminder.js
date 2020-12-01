@@ -1,6 +1,6 @@
 const { DataTypes, Deferrable } = require('sequelize');
 const { sequelize } = require('../db/db-connection');
-const { Authors } = require('./author');
+const Authors = require('./author');
 
 const Reminders = sequelize.define(
 	'Reminders',
@@ -30,7 +30,7 @@ const Reminders = sequelize.define(
 		},
 		is_expired: {
 			type: DataTypes.BOOLEAN,
-			defaultValue: true,
+			defaultValue: false,
 		},
 	},
 	{
@@ -38,7 +38,4 @@ const Reminders = sequelize.define(
 	}
 );
 
-(async function () {
-	await Reminders.sync({ force: true });
-	console.log('Reminders model created!');
-})();
+module.exports = Reminders;

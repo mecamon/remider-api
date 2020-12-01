@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../db/db-connection');
 
-exports.Authors = sequelize.define(
+const Authors = sequelize.define(
 	'Authors',
 	{
 		id: {
@@ -10,11 +10,11 @@ exports.Authors = sequelize.define(
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		firstName: {
+		firstname: {
 			type: DataTypes.STRING(32),
 			allowNull: false,
 		},
-		lastName: {
+		lastname: {
 			type: DataTypes.STRING(32),
 		},
 	},
@@ -23,7 +23,4 @@ exports.Authors = sequelize.define(
 	}
 );
 
-(async function () {
-	await Authors.sync({ alter: true });
-	console.log('Author model created!');
-})();
+module.exports = Authors;

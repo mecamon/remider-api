@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "create-models": "node models/sync-all-models.js"
+    "create-models": "node models/create-models.js"
   },
   "author": "Meca",
   "license": "ISC",
