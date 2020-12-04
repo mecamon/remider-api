@@ -47,6 +47,33 @@ const authorRepo = Object.freeze({
 
 		return modifiedReminder;
 	},
+	delReminder: async id => {
+		return await Reminders.destroy({ where: { id: id } });
+	},
+	addAuthorAndReminder: async ({ newAuthor, newReminder }) => {
+		try {
+			const result = await sequelize.transaction(async t => {
+				const { id } = await Authors.create(newAuthor, {
+					transaction: t,
+				});
+
+				const adaptedReminder = {
+					author_id: id,
+					activity_name: newReminder.title,
+					description: newReminder.description,
+				};
+
+				const { dataValues } = await Reminders.create(adaptedReminder, {
+					transaction: t,
+				});
+
+				return dataValues;
+			});
+			return result;
+		} catch (error) {
+			console.log(error);
+		}
+	},
 });
 
 module.exports = authorRepo;

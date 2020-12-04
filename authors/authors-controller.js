@@ -1,7 +1,7 @@
 const { httpSuccess, httpError } = require('../helpers/reponse-generator');
 const {
 	firstnameValidator,
-	delAuthorValidator,
+	delValidator,
 } = require('../helpers/entry-validators');
 const authorRepo = require('../repo/author-repo');
 
@@ -25,7 +25,7 @@ exports.createAuthor = async userEntry => {
 
 exports.deleteAuthor = async id => {
 	try {
-		delAuthorValidator(id);
+		delValidator(id);
 
 		id = parseInt(id);
 

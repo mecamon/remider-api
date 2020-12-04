@@ -1,5 +1,9 @@
 const { httpSuccess, httpError } = require('../helpers/reponse-generator');
-const { reminderValidator } = require('../helpers/entry-validators');
+const {
+	firstnameValidator,
+	reminderValidator,
+	delValidator,
+} = require('../helpers/entry-validators');
 const authorRepo = require('../repo/author-repo');
 
 exports.createReminder = async userEntry => {
@@ -37,6 +41,55 @@ exports.updateReminder = async newReminder => {
 
 		return httpSuccess({
 			statusCode: 200,
+			data: result,
+		});
+	} catch (e) {
+		return httpError({
+			statusCode: 400,
+			errorMessage: e.message,
+		});
+	}
+};
+
+exports.deleteReminder = async id => {
+	try {
+		delValidator(id);
+
+		id = parseInt(id);
+
+		const result = await authorRepo.delReminder(id);
+
+		return httpSuccess({
+			statusCode: 200,
+			data: result,
+		});
+	} catch (e) {
+		return httpError({
+			statusCode: 400,
+			errorMessage: e.message,
+		});
+	}
+};
+
+exports.registerAndReminder = async data => {
+	try {
+		const { newAuthor, newReminder } = data;
+
+		firstnameValidator(newAuthor);
+
+		reminderValidator(
+			newReminder,
+			'Every reminder needs to have a title!',
+			'Every reminder needs to have a description!'
+		);
+
+		const result = await authorRepo.addAuthorAndReminder({
+			newAuthor,
+			newReminder,
+		});
+
+		return httpSuccess({
+			statusCode: 201,
 			data: result,
 		});
 	} catch (e) {

@@ -14,7 +14,7 @@ exports.reminderValidator = (userEntry, errorMessage1, errorMessage2) => {
 	}
 };
 
-exports.delAuthorValidator = id => {
+exports.delValidator = id => {
 	id = parseInt(id);
 	if (!id) {
 		throw new Error('Id passed must be a number!');
