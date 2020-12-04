@@ -1,9 +1,9 @@
 Registrar como autor: Le permite a alguien registrarse como autor, eso básicamente guarda su nombre para que pueda 
-crear recordatorios donde aparezca su nombre como creador.---------------
+crear recordatorios donde aparezca su nombre como creador.--------------------
 
-Borrar autor: borra un autor y elimina los recordatorios creados por este autor.
+Borrar autor: borra un autor y elimina los recordatorios creados por este autor.---------------
 
-Escribir recordatorio: Le permite a un autor ya registrado crear un recordatorio.
+Escribir recordatorio: Le permite a un autor ya registrado crear un recordatorio.--------------
 
 Editar recordatorio: Cambia un recordatorio ya creado. Debe ser editado por el mismo autor.
 

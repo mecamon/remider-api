@@ -24,9 +24,13 @@ const Reminders = sequelize.define(
 			type: DataTypes.STRING(32),
 			allowNull: false,
 		},
+		description: {
+			type: DataTypes.TEXT,
+			allowNull: false,
+		},
 		date: {
 			type: DataTypes.DATE,
-			defaultValue: Date.NOW,
+			defaultValue: DataTypes.NOW,
 		},
 		is_expired: {
 			type: DataTypes.BOOLEAN,
