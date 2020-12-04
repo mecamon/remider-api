@@ -4,6 +4,7 @@ const {
 	createAuthor,
 	createReminder,
 	deleteAuthor,
+	updateReminder,
 } = require('./authors-controller');
 
 route.get('/', (req, res) => {
@@ -28,6 +29,14 @@ route.delete('/:id', (req, res) => {
 
 route.post('/reminder', (req, res) => {
 	createReminder(req.body)
+		.then(({ headers, statusCode, data }) => {
+			res.set(headers).status(statusCode).send(data);
+		})
+		.catch(e => res.status(500).end());
+});
+
+route.put('/reminder', (req, res) => {
+	updateReminder(req.body)
 		.then(({ headers, statusCode, data }) => {
 			res.set(headers).status(statusCode).send(data);
 		})

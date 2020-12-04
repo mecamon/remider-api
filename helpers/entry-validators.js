@@ -6,11 +6,11 @@ exports.firstnameValidator = userEntry => {
 	}
 };
 
-exports.reminderValidator = userEntry => {
+exports.reminderValidator = (userEntry, errorMessage1, errorMessage2) => {
 	if (!userEntry.title) {
-		throw new Error('Every reminder needs to have a title!');
+		throw new Error(errorMessage1);
 	} else if (!userEntry.description) {
-		throw new Error('Every reminder needs to have a description!');
+		throw new Error(errorMessage2);
 	}
 };
 

@@ -2,6 +2,7 @@ const {
 	createAuthor,
 	createReminder,
 	deleteAuthor,
+	updateReminder,
 } = require('./authors-controller');
 
 describe('author-controller', () => {
@@ -111,6 +112,50 @@ describe('author-controller', () => {
 				data: JSON.stringify({
 					success: false,
 					error: 'Id passed must be a valid number!',
+				}),
+			});
+		});
+	});
+
+	describe('updateReminder', () => {
+		it('Vefifies that the new title is NOT empty', async () => {
+			const newReminder = {
+				author_id: 8,
+				title: undefined,
+				description: 'gasdfasasvas',
+			};
+
+			const result = await updateReminder(newReminder);
+
+			expect(result).toEqual({
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				statusCode: 400,
+				data: JSON.stringify({
+					success: false,
+					error: 'The new title must not be empty!',
+				}),
+			});
+		});
+
+		it('Vefifies that the new description is NOT empty', async () => {
+			const newReminder = {
+				id: 8,
+				title: 'gasdfasasvasasdasdasda',
+				description: undefined,
+			};
+
+			const result = await updateReminder(newReminder);
+
+			expect(result).toEqual({
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				statusCode: 400,
+				data: JSON.stringify({
+					success: false,
+					error: 'The new description must not be empty!',
 				}),
 			});
 		});

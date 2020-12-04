@@ -5,7 +5,7 @@ Borrar autor: borra un autor y elimina los recordatorios creados por este autor.
 
 Escribir recordatorio: Le permite a un autor ya registrado crear un recordatorio.--------------
 
-Editar recordatorio: Cambia un recordatorio ya creado. Debe ser editado por el mismo autor.
+Editar recordatorio: Cambia un recordatorio ya creado. Debe ser editado por el mismo autor.------------
 
 Escribir recordatorio y registrase al mismo tiempo: Le permite a alguien que no se ha registrado aun crear un nuevo autor y un recordatorio.
 

@@ -36,6 +36,17 @@ const authorRepo = Object.freeze({
 			console.log(error);
 		}
 	},
+	modifyReminder: async ({ id, title, description }) => {
+		const modifiedReminder = await Reminders.update(
+			{
+				activity_name: title,
+				description: description,
+			},
+			{ where: { id: id } }
+		);
+
+		return modifiedReminder;
+	},
 });
 
 module.exports = authorRepo;
