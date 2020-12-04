@@ -1,17 +1,21 @@
 const express = require('express');
 const route = express.Router();
-const { createAuthor, deleteAuthor } = require('./authors-controller');
+const { createReminder, updateReminder } = require('./reminders-controller');
+
+route.get('/', (req, res) => {
+	res.send('Hello from GET');
+});
 
 route.post('/', (req, res) => {
-	createAuthor(req.body)
+	createReminder(req.body)
 		.then(({ headers, statusCode, data }) => {
 			res.set(headers).status(statusCode).send(data);
 		})
 		.catch(e => res.status(500).end());
 });
 
-route.delete('/:id', (req, res) => {
-	deleteAuthor(req.params.id)
+route.put('/', (req, res) => {
+	updateReminder(req.body)
 		.then(({ headers, statusCode, data }) => {
 			res.set(headers).status(statusCode).send(data);
 		})
