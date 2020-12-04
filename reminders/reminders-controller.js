@@ -99,3 +99,21 @@ exports.registerAndReminder = async data => {
 		});
 	}
 };
+
+exports.getReminders = async queryParams => {
+	try {
+		const { page, author, state } = queryParams;
+
+		const result = await authorRepo.listReminders({ page, author, state });
+
+		return httpSuccess({
+			statusCode: 200,
+			data: result,
+		});
+	} catch (e) {
+		return httpError({
+			statusCode: 400,
+			errorMessage: e,
+		});
+	}
+};

@@ -74,6 +74,37 @@ const authorRepo = Object.freeze({
 			console.log(error);
 		}
 	},
+	listReminders: async ({ page = 1, author, state }) => {
+		let queryFilter = null;
+		let quantity = null;
+
+		if (!author && !state) {
+			queryFilter = {
+				attributes: [['activity_name', 'title'], 'description'],
+			};
+			quantity = await Reminders.count();
+		} else if (author && !state) {
+			queryFilter = {
+				attributes: [['activity_name', 'title'], 'description'],
+				where: { author_id: author },
+			};
+			quantity = await Reminders.count({ where: { author_id: author } });
+		}
+
+		const limit = 10;
+		const currentPage = page;
+		const totalOfPages = Math.ceil(quantity / limit);
+
+		queryFilter.limit = limit;
+		queryFilter.offset = (currentPage - 1) * limit;
+
+		const reminders = await Reminders.findAll(queryFilter);
+
+		return {
+			totalOfPages: totalOfPages,
+			reminders: reminders,
+		};
+	},
 });
 
 module.exports = authorRepo;

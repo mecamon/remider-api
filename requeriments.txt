@@ -8,9 +8,11 @@ Escribir recordatorio: Le permite a un autor ya registrado crear un recordatorio
 Editar recordatorio: Cambia un recordatorio ya creado. Debe ser editado por el mismo autor.------------      (REMINDER)
 
 Escribir recordatorio y registrase al mismo tiempo: Le permite a alguien que no se ha registrado aun crear
-un nuevo autor y un recordatorio.      (REMINDER)
+un nuevo autor y un recordatorio.--------------      (REMINDER)
 
-Borrar recordatorio: borra un recordatorio. Debe ser borrado por el mismo autor.      (REMINDER)
+Borrar recordatorio: borra un recordatorio. Debe ser borrado por el mismo autor.--------------       (REMINDER)
 
 Listar recordatorios: Por defecto lista todos los recordatorios hechos por los autores con un limite de 10 por página. 
-Sin embargo, se puede filtrar por autor, o por estado: holgado(verde), atento(amarillo) o a punto de expirar(rojo).  (REMINDER)
+Sin embargo, se puede filtrar por autor, o por estado: holgado(verde), atento(amarillo) o a punto de expirar(rojo).   (REMINDER)
+
+Limit the amoung of reminders per page and add the filter (PENDING)

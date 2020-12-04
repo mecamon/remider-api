@@ -5,10 +5,15 @@ const {
 	updateReminder,
 	deleteReminder,
 	registerAndReminder,
+	getReminders,
 } = require('./reminders-controller');
 
 route.get('/', (req, res) => {
-	res.send('Hello from GET');
+	getReminders(req.query)
+		.then(({ headers, statusCode, data }) => {
+			res.set(headers).status(statusCode).send(data);
+		})
+		.catch(e => res.status(500).end());
 });
 
 route.post('/', (req, res) => {
